@@ -48,6 +48,31 @@ export default function Home() {
           <HeroSection />
         </div>
 
+        {/* Bloque promocional: Advent of Code ETSIIT 2025 (debajo del CTA) */}
+        <div className="w-full mt-6">
+          <Layout>
+            <div className="max-w-4xl mx-auto">
+              <Link href="/compite/aoc-2025" legacyBehavior passHref>
+                <a aria-label="Reto Advent of Code ETSIIT 2025 — ver detalles e inscribirse" className="group block rounded-2xl overflow-hidden border border-black/5 dark:border-white/10 bg-gradient-to-r from-yellow-50 via-white to-blue-50 dark:from-yellow-900/5 dark:via-transparent dark:to-blue-900/5 shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-warm-orange/40">
+                  <div className="p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-lg bg-yellow-100 dark:bg-yellow-800 text-2xl">🏆</div>
+
+                    <div className="flex-1">
+                      <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white">🏆 Reto Advent of Code ETSIIT 2025 🏆</h3>
+                      <p className="mt-1 text-sm text-black/70 dark:text-white/70">¡Demuestra tus habilidades y compite por la gloria! Consulta las normas, los desafíos diarios y la clasificación en tiempo real.</p>
+                    </div>
+
+                    <div className="mt-3 sm:mt-0 sm:ml-4 flex items-center text-sm text-black/60 dark:text-white/60">
+                      <span className="hidden sm:inline">Participa ahora</span>
+                      <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            </div>
+          </Layout>
+        </div>
+
         {/* Middle cards section - Closer to hero */}
         <div id="cards-section" className="mt-2">
           <Layout>

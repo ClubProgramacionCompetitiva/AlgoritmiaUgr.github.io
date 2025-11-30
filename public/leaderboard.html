@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clasificación — Advent of Code ETSIIT 2025</title>
+    <style>
+      :root{
+        --bg:#0b1020; --panel:#071226; --muted:#9aa6b2; --accent:#00f5a0; --accent2:#3ea8ff; --card:#0f1724; --border:#1e293b;
+      }
+      html,body{height:100%;}
+      body{margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;background:var(--bg);color:#e6eef6;display:flex;align-items:center;justify-content:center;padding:24px}
+      .container{max-width:960px;width:100%}
+      header{text-align:center;margin-bottom:18px}
+      h1{margin:0;font-weight:600}
+      .panel{background:linear-gradient(180deg,var(--panel),#06101b);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:0 10px 30px rgba(2,6,23,.6)}
+      .controls{display:flex;gap:8px;justify-content:center;margin-bottom:12px}
+      .btn{background:var(--accent2);color:#042033;padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:700}
+      table{width:100%;border-collapse:collapse;margin-top:8px}
+      th,td{padding:10px;border-bottom:1px solid rgba(255,255,255,0.04);text-align:left}
+      thead th{color:var(--muted);font-weight:600;font-size:13px}
+      tbody tr:hover{background:rgba(255,255,255,0.02)}
+      .pos{width:48px;font-weight:700;color:var(--accent)}
+      .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .stars{width:96px;text-align:right}
+      .loading{opacity:.7;text-align:center;padding:16px}
+      .error{color:#ff7b7b;text-align:center;padding:12px}
+      @media (max-width:640px){th:nth-child(3),td:nth-child(3){display:none}}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel">
+        <header>
+          <h1>📈 Clasificación — Advent of Code ETSIIT 2025</h1>
+          <p style="margin:6px 0 0;color:var(--muted);font-size:13px">Datos cargados desde el backend interno (/api/leaderboard)</p>
+        </header>
+
+        <div class="controls">
+          <button id="refresh" class="btn">Refrescar</button>
+        </div>
+
+        <div id="status" class="loading">Cargando clasificación…</div>
+        <div id="error" class="error" style="display:none"></div>
+        <div id="table-wrap" style="display:none">
+          <table id="leaderboard">
+            <thead>
+              <tr><th class="pos">#</th><th>Nombre</th><th class="stars">Estrellas</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      async function loadLeaderboard(){
+        const status = document.getElementById('status');
+        const errorEl = document.getElementById('error');
+        const wrap = document.getElementById('table-wrap');
+        const tbody = document.querySelector('#leaderboard tbody');
+        status.style.display = '';
+        status.textContent = 'Cargando clasificación…';
+        errorEl.style.display = 'none';
+        wrap.style.display = 'none';
+        tbody.innerHTML = '';
+
+        try{
+          const resp = await fetch('/api/leaderboard', {cache: 'no-store'});
+          if(!resp.ok){
+            const txt = await resp.text();
+            throw new Error('Error al obtener datos: ' + resp.status + ' ' + txt);
+          }
+          const json = await resp.json();
+
+          if(!json || !json.members){
+            throw new Error('JSON inválido o sin campo members');
+          }
+
+          // members is an object keyed by id
+          const members = Object.values(json.members || {});
+
+          // Normalize values: ensure name, local_score, stars
+          const normalized = members.map(m => ({
+            id: m.id,
+            name: (m.name && m.name.length>0)? m.name : ('User ' + (m.id||'anon')),
+            local_score: (typeof m.local_score === 'number')? m.local_score : (m.local_score? Number(m.local_score):0),
+            stars: (typeof m.stars === 'number')? m.stars : (m.stars? Number(m.stars):0)
+          }));
+
+          // Sort: primary by local_score desc, secondary by stars desc
+          normalized.sort((a,b)=>{
+            if(b.local_score !== a.local_score) return b.local_score - a.local_score;
+            return b.stars - a.stars;
+          });
+
+          // Build table rows
+          normalized.forEach((m, idx)=>{
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td class="pos">${idx+1}</td><td class="name">${escapeHtml(m.name)}</td><td class="stars">${m.stars}</td>`;
+            tbody.appendChild(tr);
+          });
+
+          status.style.display = 'none';
+          wrap.style.display = '';
+        }catch(err){
+          status.style.display = 'none';
+          errorEl.style.display = '';
+          errorEl.textContent = err.message || String(err);
+        }
+      }
+
+      function escapeHtml(s){
+        return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]; });
+      }
+
+      document.getElementById('refresh').addEventListener('click', loadLeaderboard);
+      // Initial load
+      loadLeaderboard();
+    </script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-import { Github, Settings } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { memo, useMemo } from 'react';
 import ThemeToggle from './ThemeToggle';
@@ -16,16 +16,9 @@ const Header = memo(() => {
     { label: 'Comparte', path: '/comparte' },
   ], []);
 
-  // Handler para detectar AltGr+Click en el logo
-  const handleLogoClick = (e) => {
-    // AltGr se detecta como altKey + ctrlKey en Windows, o solo altKey en algunos navegadores
-    if ((e.altKey && e.ctrlKey) || (e.getModifierState && e.getModifierState('AltGraph'))) {
-      e.preventDefault();
-      router.push('/admin/login');
-    } else if (e.type === 'click') {
-      // Click normal - navegar a home
-      router.push('/');
-    }
+  // Handler para navegar al home al hacer click en el logo
+  const handleLogoClick = () => {
+    router.push('/');
   };
 
   // Renderizamos siempre la cabecera para evitar diferencias SSR/CSR

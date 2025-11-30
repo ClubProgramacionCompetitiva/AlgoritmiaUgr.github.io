@@ -1,0 +1,28 @@
+nohup: ignoring input
+
+> club-programacion-ugr-nextjs@0.1.0 dev
+> next dev --port 3000 --turbo
+
+   ▲ Next.js 15.5.6 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://10.255.255.254:3000
+
+ ✓ Starting...
+ ✓ Ready in 1143ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3.5s
+`legacyBehavior` is deprecated and will be removed in a future release. A codemod is available to upgrade your components:
+
+npx @next/codemod@latest new-link .
+
+Learn more: https://nextjs.org/docs/app/building-your-application/upgrading/codemods#remove-a-tags-from-link-components
+ GET / 200 in 8450ms
+ ✓ Compiled /_error in 186ms
+ GET /apple-touch-icon.png 404 in 1261ms
+ ○ Compiling /aprende ...
+ GET /aboutus/ 200 in 1255ms
+ ✓ Compiled /aprende in 1878ms
+ GET /aprende/ 200 in 2393ms
+ GET / 200 in 148ms
+ GET /aprende/ 200 in 156ms
+ GET /aboutus/ 200 in 200ms

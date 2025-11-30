@@ -1,7 +1,6 @@
 import '../styles/globals.css'
 import 'katex/dist/katex.min.css'
 import { ThemeProvider } from '../src/context/ThemeContext'
-import { AuthProvider } from '../src/context/AuthContext'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { getBasePath } from '../src/utils/basePath'
@@ -52,16 +51,14 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <ThemeProvider>
-        <AuthProvider>
-          <div className="min-h-screen w-full bg-pure-white dark:bg-pure-black text-black dark:text-white flex flex-col items-center">
-            <BackgroundEffects />
-            <Header />
-            <main className="w-full relative z-10 pt-20">
-              <Component {...pageProps} />
-            </main>
-          </div>
-          <Analytics />
-        </AuthProvider>
+        <div className="min-h-screen w-full bg-pure-white dark:bg-pure-black text-black dark:text-white flex flex-col items-center">
+          <BackgroundEffects />
+          <Header />
+          <main className="w-full relative z-10 pt-20">
+            <Component {...pageProps} />
+          </main>
+        </div>
+        <Analytics />
       </ThemeProvider>
     </>
   )

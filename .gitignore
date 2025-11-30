@@ -17,6 +17,9 @@ data/contents/*.json
 .env.development.local
 .env.test.local
 .env.production.local
+# Backend local env (contains secrets)
+/backend/.env
+/backend/.env.example
 
 # Vercel
 .vercel
@@ -27,6 +30,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+# Process IDs y logs temporales
+.pid
+.nextpid
+.backendpid
+backend/dev.log
 
 # OS
 .DS_Store

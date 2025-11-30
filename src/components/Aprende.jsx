@@ -359,7 +359,7 @@ const Aprende = ({ isMobileMenuOpen, onMobileMenuClose }) => {
                 </div>
               ) : (
                 <div className="text-black/60 dark:text-white/60">
-                  <p>No hay introducción configurada aún. Puedes añadirla desde el panel de administración.</p>
+                  <p>No hay introducción configurada aún.</p>
                 </div>
               )}
             </article>
@@ -426,7 +426,7 @@ const Aprende = ({ isMobileMenuOpen, onMobileMenuClose }) => {
                 <header className="mb-6">
                   <h2 className="text-2xl font-semibold text-black dark:text-white mb-1">{sectionName}</h2>
                   <p className="text-sm text-black/60 dark:text-white/60 italic">
-                    No hay descripción para esta sección aún. Puedes añadirla desde el panel de administración.
+                    No hay descripción para esta sección aún.
                   </p>
                 </header>
               </article>

@@ -1,6 +1,6 @@
 # Configuración de Base de Datos (Upstash Redis)
 
-Este proyecto usa **Upstash Redis** (a través de Vercel KV) para almacenar el contenido creado desde el panel de administración.
+Este proyecto usa **Upstash Redis** (a través de Vercel KV) para almacenar el contenido de la aplicación.
 
 ## 🚀 Configuración en Producción (Vercel)
 
@@ -54,11 +54,10 @@ Para probar la base de datos en tu entorno local:
    npm run dev
    ```
 
-3. **Probar en el panel de administración:**
-   - Ve a `http://localhost:3000/admin/login`
-   - Inicia sesión con las credenciales del `.env.local`
-   - Crea, edita y elimina contenido
-   - Los datos se guardarán en Upstash Redis
+3. **Probar la aplicación:**
+   - Ve a `http://localhost:3000`
+   - Navega por las diferentes secciones
+   - Verifica que el contenido se carga desde Redis correctamente
 
 ## 📦 Plan Gratuito de Upstash
 
@@ -78,12 +77,12 @@ content:1738572054955 → { id, section, title, content, createdAt, updatedAt }
 content:1738572098234 → { id, section, title, content, createdAt, updatedAt }
 ```
 
-## 📝 APIs Implementadas
+## 📝 APIs Implementadas (Solo Lectura)
 
-- `POST /api/content/create` - Crear contenido
 - `GET /api/content` - Listar todo el contenido
-- `PUT /api/content/update?id={id}` - Actualizar contenido
-- `DELETE /api/content/delete?id={id}` - Eliminar contenido
+- `GET /api/sections` - Obtener secciones disponibles
+- `GET /api/sections/descriptions` - Obtener descripciones de secciones
+- `GET /api/meetings` - Listar reuniones
 
 ## ⚠️ Nota Importante
 

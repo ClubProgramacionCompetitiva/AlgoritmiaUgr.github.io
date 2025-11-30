@@ -34,12 +34,6 @@ function generateSiteMap() {
        <priority>0.7</priority>
      </url>
      <url>
-       <loc>${SITE_URL}/noticias</loc>
-       <lastmod>${new Date().toISOString()}</lastmod>
-       <changefreq>daily</changefreq>
-       <priority>0.8</priority>
-     </url>
-     <url>
        <loc>${SITE_URL}/reuniones</loc>
        <lastmod>${new Date().toISOString()}</lastmod>
        <changefreq>weekly</changefreq>
