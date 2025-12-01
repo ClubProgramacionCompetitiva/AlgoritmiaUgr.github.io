@@ -123,15 +123,15 @@ export default function AoC2025() {
                         </div>
                       </div>
                       <div className="flex items-start gap-3 p-3 bg-black/5 dark:bg-white/5 rounded-lg">
-                        <span className="text-xl flex-shrink-0">📝</span>
+                        <span className="text-xl flex-shrink-0">🤖</span>
                         <div className="text-sm text-black/70 dark:text-white/70">
-                          Usar los datos de entrada oficiales o personalizados según indique el enunciado.
+                          No se permite el uso de <b>Inteligencia Artificial</b>, el ofjetivo de este reto es mejorar nuestras habilidades.
                         </div>
                       </div>
                       <div className="flex items-start gap-3 p-3 bg-black/5 dark:bg-white/5 rounded-lg">
-                        <span className="text-xl flex-shrink-0">⏰</span>
+                        <span className="text-xl flex-shrink-0">🏆</span>
                         <div className="text-sm text-black/70 dark:text-white/70">
-                          Respetar los plazos de entrega; las soluciones tardías pueden penalizarse.
+                          Se dará un premio a quien tenga la mejor puntuación el día 19. Y se dará otro a la vuelta de vacaciones para quién quiera tomarselo con tranquilidad. Los trofeos estarán impresos en 3D.
                         </div>
                       </div>
                     </div>
@@ -151,7 +151,18 @@ export default function AoC2025() {
                     <div className="flex items-start gap-3 p-3 bg-black/5 dark:bg-white/5 rounded-lg">
                       <span className="text-xl flex-shrink-0">1️⃣</span>
                       <div className="text-sm text-black/70 dark:text-white/70">
-                        Únete a la clasificación privada con el código: <code className="px-2 py-1 bg-warm-orange/10 dark:bg-warm-orange/5 rounded text-warm-orange dark:text-warm-pink font-mono">5184163-4f9d2564</code>
+                        Únete a la clasificación privada con el código: <code className="px-2 py-1 bg-warm-orange/10 dark:bg-warm-orange/5 rounded text-warm-orange dark:text-warm-pink font-mono">5184163-4f9d2564</code>{' '}
+                        <a 
+                          href="https://adventofcode.com/2025/leaderboard/private" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 px-2 py-1 bg-warm-orange hover:bg-warm-red text-white text-xs font-medium rounded transition-colors"
+                        >
+                          aquí
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
                       </div>
                     </div>
                     <div className="flex items-start gap-3 p-3 bg-black/5 dark:bg-white/5 rounded-lg">
